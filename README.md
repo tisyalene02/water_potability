@@ -1,1 +1,1 @@
-# water_potability
+# water_potability-app
