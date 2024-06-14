@@ -1,8 +1,6 @@
-pip install matplotlib
-
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import seaborn as sns
 from sklearn.impute import SimpleImputer
 
@@ -201,7 +199,7 @@ print("Accuracy:", accuracy_score(ydt_test, ydt_pred))
 print("Classification Report:\n", classification_report(ydt_test, ydt_pred))
 
 # Visualize the confusion matrix
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import seaborn as sns
 
 conf_matrix = confusion_matrix(ydt_test, ydt_pred)
