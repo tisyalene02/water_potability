@@ -69,66 +69,12 @@ plt.figure(figsize=(10,5))
 sns.heatmap(balanced_df.corr())
 plt.show()
 
-# Import the necessary libraries first
-from sklearn.feature_selection import SelectKBest 
-from sklearn.feature_selection import f_classif # Chi-Squared test belongs the class of filter methods
+
 
 # Split the data into features and target
 x = balanced_df.drop('Potability', axis=1)
 y = balanced_df['Potability']
 
-# Feature extraction
-test = SelectKBest(score_func=f_classif, k='all')
-fit = test.fit(x, y)
-
-#Feature Selection result:
-
-fsr= pd.DataFrame({'feature': x.columns,
-                    'score':fit.scores_,})
-
-fsr
-
-#Visualize the feature scores
-fig, ax=plt.subplots(figsize=(7,7))
-plot=sns.barplot(data=fsr, x='score', y='feature', palette='viridis',linewidth=0.5, saturation=2, orient='h')
-plot
-
-new_df= balanced_df.drop(columns='ph')
-new_df
-
-# Split the data into features and target
-X = new_df.drop('Potability', axis=1)
-Y = new_df['Potability']
-
-#splitting dataset to train and test  to 80% and 20% for SVM
-from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.20, random_state=42)
-
-#feature scaling for SVM
-from sklearn.preprocessing import StandardScaler
-sc_x=StandardScaler()
-X_train=sc_x.fit_transform(X_train)
-X_test=sc_x.fit_transform(X_test)
-
-#fitting SVM classifier to train set
-from sklearn.svm import SVC
-classifier=SVC(kernel='rbf',random_state=42)
-classifier.fit(X_train,Y_train)
-
-#SVM predict target variable
-Y_pred=classifier.predict(X_test)
-Y_test,Y_pred
-
-#Confusion matrix for SVM
-from sklearn.metrics import confusion_matrix
-cm=confusion_matrix(Y_test,Y_pred)
-cm
-
-#Evaluation for SVM
-from sklearn.metrics import classification_report, accuracy_score
-
-print("Accuracy:", accuracy_score(Y_test, Y_pred))
-print("Classification Report:\n", classification_report(Y_test, Y_pred))
 
 #feature scaling Decision Tree
 from sklearn.preprocessing import StandardScaler
