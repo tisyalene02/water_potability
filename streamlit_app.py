@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.impute import SimpleImputer
 
+
 ds = pd.read_csv("C:/Users/User/Downloads/Machine Learning/water_potability.csv")
 ds
 
