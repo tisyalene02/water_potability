@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 
 # Load the model
-model = joblib.load("C:\Users\User\decision_tree_model.pkl")
+model = joblib.load(r"C:\Users\User\decision_tree_model.pkl")
 
 # Define the app
 st.title("Water Potability Prediction")
