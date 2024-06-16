@@ -56,12 +56,6 @@ def dataset_page():
     corr_matrix = df.corr()
     st.write(corr_matrix)
 
-    # Display histograms for numerical columns
-    st.header('Histograms')
-    numerical_columns = df.select_dtypes(include=[np.number]).columns
-    selected_column = st.selectbox('Select a column for histogram', numerical_columns)
-    st.histogram(df[selected_column])
-
     # Display the dataset in a table
     st.header('Raw Data')
     st.dataframe(df)
