@@ -56,6 +56,12 @@ def dataset_page():
     corr_matrix = df.corr()
     st.write(corr_matrix)
 
+    # Display correlation heatmap
+    st.header('Correlation Heatmap')
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(df.corr(), annot=True, cmap='coolwarm', linewidths=.5)
+    st.pyplot()
+
     # Feature selection based on correlation
     st.header('Feature Selection')
     selected_columns = st.multiselect('Select columns to plot', df.columns)
