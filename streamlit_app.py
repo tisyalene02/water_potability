@@ -51,13 +51,18 @@ def dataset_page():
     st.header('Summary Statistics')
     st.write(df.describe())
 
-    # Display histograms for numerical columns
-    st.header('Histograms')
-    numerical_columns = df.select_dtypes(include=[np.number]).columns
-    selected_column = st.selectbox('Select a column for histogram', numerical_columns)
-    plt.figure(figsize=(8, 6))
-    sns.histplot(df[selected_column], kde=True)
-    st.pyplot()
+    # Display correlation matrix
+    st.header('Correlation Matrix')
+    corr_matrix = df.corr()
+    st.write(corr_matrix)
+
+    # Feature selection based on correlation
+    st.header('Feature Selection')
+    selected_columns = st.multiselect('Select columns to plot', df.columns)
+    if selected_columns:
+        st.write(f'Selected columns: {selected_columns}')
+        sns.pairplot(df[selected_columns])
+        st.pyplot()
 
     # Display the dataset in a table
     st.header('Raw Data')
