@@ -91,12 +91,12 @@ def prediction_page():
 # Main Streamlit app
 def main():
     st.sidebar.title('Navigation')
-    page = st.sidebar.radio('Go to', ['Prediction', 'Explore Dataset'])
+    page = st.sidebar.radio('Go to', ['Explore Dataset', 'Prediction'])
 
-    if page == 'Prediction':
-        prediction_page()
-    elif page == 'Explore Dataset':
+    if page == 'Explore Dataset':
         dataset_page()
+    elif page == 'Prediction':
+        prediction_page()
 
 if __name__ == '__main__':
     main()
