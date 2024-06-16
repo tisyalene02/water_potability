@@ -56,19 +56,11 @@ def dataset_page():
     corr_matrix = df.corr()
     st.write(corr_matrix)
 
-    # Display correlation heatmap
-    st.header('Correlation Heatmap')
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(df.corr(), annot=True, cmap='coolwarm', linewidths=.5)
-    st.pyplot()
-
-    # Feature selection based on correlation
-    st.header('Feature Selection')
-    selected_columns = st.multiselect('Select columns to plot', df.columns)
-    if selected_columns:
-        st.write(f'Selected columns: {selected_columns}')
-        sns.pairplot(df[selected_columns])
-        st.pyplot()
+    # Display histograms for numerical columns
+    st.header('Histograms')
+    numerical_columns = df.select_dtypes(include=[np.number]).columns
+    selected_column = st.selectbox('Select a column for histogram', numerical_columns)
+    st.histogram(df[selected_column])
 
     # Display the dataset in a table
     st.header('Raw Data')
