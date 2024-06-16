@@ -43,6 +43,8 @@ def dataset_page():
 
     st.write("""
     This page allows you to explore the dataset used for training the potability prediction model.
+    The dataset was obtained from Kaggle.
+    [Water Potability Dataset on Kaggle](https://www.kaggle.com/datasets/nayanack/water-probability)
     """)
 
     df = load_dataset()
