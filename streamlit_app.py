@@ -51,15 +51,26 @@ def dataset_page():
 
     # Display summary statistics
     st.header('Summary Statistics')
+    st.write("""
+    The summary statistics provide an overview of key metrics in the dataset, such as mean, standard deviation,
+    minimum, maximum, and quartile values for each feature.
+    """)
     st.write(df.describe())
 
     # Display correlation matrix
     st.header('Correlation Matrix')
+    st.write("""
+    The correlation matrix shows the pairwise correlation coefficients between features in the dataset. 
+    It helps to identify relationships and dependencies between variables.
+    """)
     corr_matrix = df.corr()
     st.write(corr_matrix)
 
-    # Display the dataset in a table
+    # Display the dataset in a table with description
     st.header('Raw Data')
+    st.write("""
+    The raw dataset table displays all the collected data points used in the analysis.
+    """)
     st.dataframe(df)
 
 # Function to display prediction interface
